@@ -161,6 +161,7 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     height: fit-content;
     max-height: 88vh;
+    max-width: 370px;
     overflow-y: auto;
     margin-top: 20px;
     border: none;
