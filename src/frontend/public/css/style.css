@@ -158,11 +158,13 @@ body {
     background: white;
     border-radius: 15px;
     padding: 20px;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     height: fit-content;
-    max-height: 75vh;
+    max-height: 88vh;
     overflow-y: auto;
     margin-top: 20px;
+    border: none;
+    position: relative;
 }
 
 @media (min-width: 992px) {
@@ -172,8 +174,8 @@ body {
 }
 
 .events-sidebar h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 900;
     color: #333;
     margin-bottom: 15px;
     text-align: center;
@@ -182,36 +184,57 @@ body {
 .event-item {
     cursor: pointer;
     transition: all 0.3s ease;
-    border-left: 4px solid #667eea !important;
     border: none !important;
+    border-radius: 12px !important;
+    background: #f8f9fa !important;
+    margin-bottom: 8px;
+    position: relative;
+    overflow: hidden;
+    padding: 8px 12px !important;
+}
+
+.event-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #667eea;
+    border-radius: 12px 0 0 12px;
 }
 
 .event-item:hover {
-    transform: translateX(5px);
+    transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .event-date {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #667eea;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .event-title {
-    font-weight: 500;
-    margin-bottom: 8px;
+    font-weight: 600;
+    margin-bottom: 2px;
     color: #333;
+    font-size: 0.9rem;
 }
 
 .event-type {
     display: inline-block;
-    padding: 4px 8px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: normal;
+    box-shadow: none;
+    transition: none;
+    color: #666;
+    background: transparent;
 }
 
 .event-type.meeting {
