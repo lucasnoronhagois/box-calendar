@@ -97,21 +97,13 @@ class Calendar {
             this.loadMonthData();
         });
 
-        // Modal events
+        // Modal events - Bootstrap Modal
         const modal = document.getElementById('eventModal');
-        const closeBtn = document.querySelector('.close');
         const modalBoxImage = document.getElementById('modalBoxImage');
         
-        closeBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
+        // Esconder imagem quando modal fechar
+        modal.addEventListener('hidden.bs.modal', () => {
             modalBoxImage.style.display = 'none';
-        });
-
-        window.addEventListener('click', (event) => {
-            if (event.target === modal) {
-                modal.style.display = 'none';
-                modalBoxImage.style.display = 'none';
-            }
         });
     }
 
@@ -139,10 +131,12 @@ class Calendar {
         }
 
         eventsList.innerHTML = this.events.map(event => `
-            <div class="event-item" data-date="${event.date}">
-                <div class="event-date">${new Date(event.date + 'T00:00:00').toLocaleDateString('pt-BR')}</div>
-                <div class="event-title">${event.title}</div>
-                <div class="event-type ${event.type}">${event.type}</div>
+            <div class="event-item card mb-2" data-date="${event.date}">
+                <div class="card-body p-3">
+                    <div class="event-date small text-primary fw-bold mb-1">${new Date(event.date + 'T00:00:00').toLocaleDateString('pt-BR')}</div>
+                    <div class="event-title fw-medium mb-2">${event.title}</div>
+                    <div class="event-type badge ${event.type}">${event.type}</div>
+                </div>
             </div>
         `).join('');
 
@@ -183,7 +177,7 @@ class Calendar {
         modalDescription.textContent = event.description;
         
         modalType.textContent = event.type;
-        modalType.className = `event-type ${event.type}`;
+        modalType.className = `event-type badge ${event.type}`;
 
         // Mostrar imagem da box correspondente
         const boxNumber = event.id.toString().padStart(2, '0');
@@ -191,7 +185,9 @@ class Calendar {
         modalBoxImage.style.display = 'block';
         modalBoxImage.alt = `${event.title} - Box ${boxNumber}`;
 
-        modal.style.display = 'block';
+        // Usar Bootstrap Modal
+        const bootstrapModal = new bootstrap.Modal(modal);
+        bootstrapModal.show();
     }
 
     highlightEvents() {
