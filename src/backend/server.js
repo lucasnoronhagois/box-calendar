@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const calendarRoutes = require('./routes/calendarRoutes');
+const analytics = require('./analytics');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -20,6 +21,9 @@ app.set('views', path.join(__dirname, '../frontend/views'));
 app.use(express.static(path.join(__dirname, '../frontend/public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Vercel Analytics
+app.use(analytics);
 
 // Rotas
 app.use('/', calendarRoutes);
