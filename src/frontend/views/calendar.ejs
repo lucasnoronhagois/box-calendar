@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📅 <%= title %></h1>
+            <div class="calendar-nav">
+                <button id="prevMonth" class="nav-btn">←</button>
+                <h2 id="currentMonth"><%= new Date(year, month).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' }) %></h2>
+                <button id="nextMonth" class="nav-btn">→</button>
+            </div>
+        </header>
+
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <div class="day-header">Dom</div>
+                <div class="day-header">Seg</div>
+                <div class="day-header">Ter</div>
+                <div class="day-header">Qua</div>
+                <div class="day-header">Qui</div>
+                <div class="day-header">Sex</div>
+                <div class="day-header">Sáb</div>
+            </div>
+            
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Dias do calendário serão inseridos aqui via JavaScript -->
+            </div>
+        </div>
+
+        <div class="events-sidebar">
+            <h3>Eventos do Mês</h3>
+            <div id="eventsList">
+                <% if (events && events.length > 0) { %>
+                    <% events.forEach(event => { %>
+                        <div class="event-item" data-date="<%= event.date %>">
+                            <div class="event-date"><%= new Date(event.date).toLocaleDateString('pt-BR') %></div>
+                            <div class="event-title"><%= event.title %></div>
+                            <div class="event-type <%= event.type %>"><%= event.type %></div>
+                        </div>
+                    <% }); %>
+                <% } else { %>
+                    <p class="no-events">Nenhum evento neste mês</p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para detalhes do evento -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDate"></p>
+            <p id="modalDescription"></p>
+            <div id="modalType"></div>
+            <div class="modal-image">
+                <img id="modalBoxImage" src="" alt="Box Image" style="display: none;">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dados do servidor
+        const currentYear = <%= year %>;
+        const currentMonth = <%= month %>;
+        const events = <%- JSON.stringify(events || []) %>;
+    </script>
+    <script src="/js/calendar.js"></script>
+</body>
+</html>

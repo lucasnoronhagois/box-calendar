@@ -7,13 +7,15 @@
     "start": "node src/backend/server.js",
     "dev": "nodemon --exec babel-node src/backend/server.js",
     "build": "babel src -d dist --env-name production && npm run minify",
-    "minify": "node scripts/minify.js"
+    "minify": "node scripts/minify.js",
+    "vercel-build": "babel src -d dist --env-name production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "ejs": "^3.1.10",
     "express": "^5.1.0"
   },
   "devDependencies": {
