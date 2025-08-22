@@ -1,0 +1,298 @@
+/* Calendar Container */
+.calendar-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  padding: 0;
+}
+
+/* Header */
+.header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(190px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.title-calendar {
+  font-size: 2.2rem;
+}
+
+.month-title {
+  margin-top: 10px;
+  font-size: 1.7rem;
+}
+
+.nav-btn {
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.05);
+}
+
+/* Calendar Grid */
+.calendar-grid-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 20px 0;
+  width: 100%;
+  max-width: 840px; /* Ajuste este valor para largura */
+  max-height: 750px; /* Ajuste este valor para altura */
+  height: 100%;
+  margin-left: auto;
+}
+
+.calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #e4e4e4;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 10px;
+  padding: 0 15px;
+}
+
+.day-header {
+  padding: 10px 8px; /* Ajuste estes valores */
+  text-align: center;
+  font-weight: 600;
+  color: #495057;
+  font-size: 0.85rem; /* Ajuste este valor */
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  background: #ffffff;
+  padding: 0 15px 15px 15px;
+}
+
+.calendar-day {
+  aspect-ratio: 1;
+  background: white;
+  border: 1px solid    #d6d6d6;
+  min-height: 110px; /* Ajuste este valor */
+  min-width: 110px;
+  padding: 8px; /* Ajuste este valor */
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.calendar-day:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+}
+
+.calendar-day.other-month {
+  background: #f8f9fa;
+  color: #adb5bd;
+}
+
+.calendar-day.today {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.calendar-day.today .day-number {
+  color: white;
+  font-weight: bold;
+}
+
+.calendar-day.has-events {
+  border-color: #ff6b6b;
+  background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+  color: white;
+  font-weight: 600;
+}
+
+.calendar-day.has-events .day-number {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.calendar-day.has-events:hover { 
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(33, 150, 243, 0.3);
+}
+
+.day-number {
+  font-size: 1rem; /* Ajuste este valor */
+  font-weight: 500;
+  margin-bottom: 6px; /* Ajuste este valor */
+  color: #495057;
+}
+
+.event-indicator {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.event-indicator:hover {
+  transform: scale(1.1);
+}
+
+.event-dot {
+  width: 6px;
+  height: 6px;
+  background: #2196f3;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(33, 150, 243, 0.3);
+}
+
+/* Events Sidebar */
+.events-sidebar {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 15px;
+  padding: 15px; /* Ajuste este valor */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  max-height: 750px; /* Ajuste este valor */
+  overflow-y: auto;
+  width: 100%;
+  max-width: 350px; /* Ajuste este valor */
+  margin-right: auto;
+}
+
+.event-item {
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-radius: 10px;
+}
+
+.event-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.event-date {
+  font-size: 0.85rem;
+}
+
+.event-title {
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Event Type Badges */
+.event-type.newbox {
+  background: #f3e5f5;
+  color: #7b1fa2;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* Footer */
+.footer {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: auto;
+}
+
+.footer-content {
+  color: white;
+}
+
+.author {
+  font-weight: 600;
+  color: #ffd700;
+}
+
+/* Modal */
+.modal-content {
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  border-bottom: 1px solid #dee2e6;
+  border-radius: 15px 15px 0 0;
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+  border-radius: 0 0 15px 15px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .calendar-day {
+    min-height: 80px;
+    padding: 8px;
+  }
+  
+  .day-number {
+    font-size: 0.9rem;
+  }
+  
+  .events-sidebar {
+    margin-top: 20px;
+  }
+}
+
+/* Scrollbar customization */
+.events-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.events-sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.events-sidebar::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.events-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* ========================================
+   PROPRIEDADES PARA AJUSTE MANUAL
+   ======================================== */
+
+/*
+CALENDÁRIO:
+- .calendar-grid-container max-width: 800px (largura máxima do calendário)
+- .calendar-day min-height: 80px (altura mínima dos dias)
+- .calendar-day padding: 8px (espaçamento interno dos dias)
+- .day-header padding: 10px 8px (espaçamento dos cabeçalhos)
+- .day-header font-size: 0.85rem (tamanho da fonte dos dias da semana)
+- .day-number font-size: 1rem (tamanho da fonte dos números)
+- .day-number margin-bottom: 6px (espaçamento abaixo dos números)
+
+PAINEL DE EVENTOS:
+- .events-sidebar max-width: 350px (largura máxima do painel)
+- .events-sidebar max-height: 400px (altura máxima do painel)
+- .events-sidebar padding: 15px (espaçamento interno do painel)
+
+MODAL:
+- .modal-content (tamanho do modal)
+- Imagem no modal: maxWidth: '600px' (no EventModal.jsx)
+
+Para ajustar, modifique os valores acima e recarregue a página.
+*/
