@@ -1,7 +1,16 @@
+import React from 'react'
 import { format, isSameDay, isToday } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { Event } from '../types'
 
-const CalendarDay = ({ date, events, isCurrentMonth, onEventClick }) => {
+interface CalendarDayProps {
+  date: Date
+  events: Event[]
+  isCurrentMonth: boolean
+  onEventClick: (event: Event) => void
+}
+
+const CalendarDay: React.FC<CalendarDayProps> = ({ date, events, isCurrentMonth, onEventClick }) => {
   const dayNumber = format(date, 'd')
   const isCurrentDay = isToday(date)
   

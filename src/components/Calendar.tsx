@@ -1,20 +1,20 @@
-import { useState, useEffect } from 'react'
-import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, isSameDay, addMonths, subMonths } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
+import React, { useState, useEffect } from 'react'
+import { format, startOfMonth, endOfMonth, eachDayOfInterval, isSameMonth, addMonths, subMonths } from 'date-fns'
 import CalendarGrid from './CalendarGrid'
 import EventsSidebar from './EventsSidebar'
 import EventModal from './EventModal'
-import './Calendar.css'
-import './Discord.css'
+import { Event } from '../types'
+import '../styles/Calendar.css'
+import '../styles/Discord.css'
 
-const Calendar = () => {
-  const [currentDate, setCurrentDate] = useState(new Date())
-  const [events, setEvents] = useState([])
-  const [selectedEvent, setSelectedEvent] = useState(null)
-  const [showModal, setShowModal] = useState(false)
+const Calendar: React.FC = () => {
+  const [currentDate, setCurrentDate] = useState<Date>(new Date())
+  const [events, setEvents] = useState<Event[]>([])
+  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null)
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   // Dados de exemplo dos eventos
-  const sampleEvents = [
+  const sampleEvents: Event[] = [
     {
       id: 1,
       title: "Box 1",
@@ -141,7 +141,7 @@ const Calendar = () => {
     setCurrentDate(subMonths(currentDate, 1))
   }
 
-  const handleEventClick = (event) => {
+  const handleEventClick = (event: Event) => {
     setSelectedEvent(event)
     setShowModal(true)
   }
@@ -151,12 +151,6 @@ const Calendar = () => {
     setSelectedEvent(null)
   }
 
-  const getEventsForDate = (date) => {
-    return events.filter(event => {
-      const eventDate = new Date(event.date + 'T00:00:00')
-      return isSameDay(eventDate, date)
-    })
-  }
 
   const monthDays = eachDayOfInterval({
     start: startOfMonth(currentDate),

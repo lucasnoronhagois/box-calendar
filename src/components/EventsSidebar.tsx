@@ -1,8 +1,15 @@
+import React from 'react'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { Event } from '../types'
 
-const EventsSidebar = ({ events, onEventClick }) => {
-  const getTypeBadgeClass = (type) => {
+interface EventsSidebarProps {
+  events: Event[]
+  onEventClick: (event: Event) => void
+}
+
+const EventsSidebar: React.FC<EventsSidebarProps> = ({ events, onEventClick }) => {
+  const getTypeBadgeClass = (type: string): string => {
     switch (type) {
       case 'New box':
         return 'event-type newbox'

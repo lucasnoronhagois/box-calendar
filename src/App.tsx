@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import React from 'react'
 import Calendar from './components/Calendar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <Calendar />

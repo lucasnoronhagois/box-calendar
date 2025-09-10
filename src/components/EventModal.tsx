@@ -1,11 +1,19 @@
+import React from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { Event } from '../types'
 
-const EventModal = ({ show, event, onClose }) => {
+interface EventModalProps {
+  show: boolean
+  event: Event | null
+  onClose: () => void
+}
+
+const EventModal: React.FC<EventModalProps> = ({ show, event, onClose }) => {
   if (!event) return null
 
-  const getTypeBadgeClass = (type) => {
+  const getTypeBadgeClass = (type: string): string => {
     switch (type) {
       case 'New box':
         return 'event-type newbox'
@@ -18,7 +26,7 @@ const EventModal = ({ show, event, onClose }) => {
     }
   }
 
-  const getBoxImage = () => {
+  const getBoxImage = (): string => {
     const boxNumber = event.id
     return `/box${boxNumber.toString().padStart(2, '0')}.png`
   }

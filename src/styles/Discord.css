@@ -45,3 +45,43 @@
   transition: all 0.2s ease;
   cursor: pointer;
 }
+
+/* ========================================
+   OTIMIZAÇÕES MOBILE - DISCORD
+   ======================================== */
+
+@media (max-width: 768px) {
+  .discord-simple {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .discord-text {
+    font-size: 0.9rem;
+  }
+  
+  .discord-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .discord-simple i {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .discord-simple {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+  
+  .discord-text {
+    font-size: 0.8rem;
+  }
+  
+  .discord-icon {
+    width: 16px;
+    height: 16px;
+  }
+}

@@ -1,8 +1,17 @@
+import React from 'react'
 import { format, getDay, isSameDay, isSameMonth } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import CalendarDay from './CalendarDay'
+import { Event } from '../types'
 
-const CalendarGrid = ({ monthDays, currentDate, events, onEventClick }) => {
+interface CalendarGridProps {
+  monthDays: Date[]
+  currentDate: Date
+  events: Event[]
+  onEventClick: (event: Event) => void
+}
+
+const CalendarGrid: React.FC<CalendarGridProps> = ({ monthDays, currentDate, events, onEventClick }) => {
   const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
   // Adicionar dias vazios no início para alinhar com o primeiro dia da semana
@@ -11,7 +20,7 @@ const CalendarGrid = ({ monthDays, currentDate, events, onEventClick }) => {
   const firstDayOfWeek = getDay(monthDays[0])
   const emptyDays = Array(firstDayOfWeek).fill(null)
 
-  const getEventsForDate = (date) => {
+  const getEventsForDate = (date: Date): Event[] => {
     return events.filter(event => {
       const eventDate = new Date(event.date + 'T00:00:00')
       return isSameDay(eventDate, date)

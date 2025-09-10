@@ -275,6 +275,146 @@
    PROPRIEDADES PARA AJUSTE MANUAL
    ======================================== */
 
+/* ========================================
+   OTIMIZAÇÕES MOBILE
+   ======================================== */
+
+/* Mobile First - Telas pequenas (até 768px) */
+@media (max-width: 768px) {
+  /* Header mobile */
+  .title-calendar {
+    font-size: 1.8rem;
+  }
+  
+  .month-title {
+    font-size: 1.4rem;
+  }
+  
+  .nav-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+  }
+  
+  /* Container mobile */
+  .calendar-container {
+    padding: 10px;
+  }
+  
+  /* Grid mobile */
+  .calendar-grid-container {
+    margin: 10px 0;
+    max-width: 100%;
+    max-height: none;
+  }
+  
+  .calendar-header {
+    padding: 0 10px;
+  }
+  
+  .day-header {
+    padding: 8px 4px;
+    font-size: 0.75rem;
+  }
+  
+  .calendar-grid {
+    padding: 0 10px 10px 10px;
+  }
+  
+  .calendar-day {
+    min-height: 60px;
+    padding: 6px;
+  }
+  
+  .day-number {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+  }
+  
+  /* Event dot mobile */
+  .event-dot {
+    width: 6px;
+    height: 6px;
+  }
+  
+  /* Sidebar mobile */
+  .events-sidebar {
+    max-width: 100%;
+    max-height: 300px;
+    padding: 10px;
+    margin-top: 15px;
+  }
+  
+  .events-sidebar h3 {
+    font-size: 1.1rem;
+  }
+  
+  .event-item {
+    margin-bottom: 8px;
+  }
+  
+  .event-item .card-body {
+    padding: 12px;
+  }
+  
+  .event-title {
+    font-size: 0.9rem;
+  }
+  
+  .event-date {
+    font-size: 0.8rem;
+  }
+  
+  /* Modal mobile */
+  .modal-dialog {
+    margin: 10px;
+    max-width: calc(100% - 20px);
+  }
+  
+  .modal-body {
+    padding: 15px;
+  }
+  
+  .modal-body img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Discord section mobile */
+  .discord-simple {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+  
+  .discord-icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Tablets (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .calendar-grid-container {
+    max-width: 95%;
+  }
+  
+  .events-sidebar {
+    max-width: 90%;
+  }
+  
+  .title-calendar {
+    font-size: 2rem;
+  }
+  
+  .month-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* ========================================
+   PROPRIEDADES PARA AJUSTE MANUAL
+   ======================================== */
+
 /*
 CALENDÁRIO:
 - .calendar-grid-container max-width: 800px (largura máxima do calendário)
